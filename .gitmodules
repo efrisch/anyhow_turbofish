@@ -1,0 +1,9 @@
+[submodule "v1"]
+	path = v1
+	url = ./v1
+[submodule "v2"]
+	path = v2
+	url = ./v2
+[submodule "v3"]
+	path = v3
+	url = ./v3
