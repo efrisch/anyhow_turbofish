@@ -8,10 +8,10 @@ fn main() {
     };
     match version_result {
         Ok(vers) => {
-            println!("parsed version: {}", vers)
+            println!("parsed version: {vers}")
         }
         Err(err) => {
-            println!("Could not parse version {:?}", err)
+            println!("Could not parse version {err:?}")
         }
     }
 }
