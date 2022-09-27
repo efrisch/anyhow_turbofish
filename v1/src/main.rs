@@ -1,4 +1,6 @@
-const JSON_BODY: &'static str = "{ \"version\": \"0.8\" }";
+const JSON_BODY: &'static str = r#"
+    { "version": "0.8" }
+"#;
 
 fn main() {
     let json_res = json::parse(JSON_BODY);

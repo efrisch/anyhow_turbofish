@@ -1,4 +1,6 @@
-const JSON_BODY: &'static str = "{ \"version\": \"\" }";
+const JSON_BODY: &'static str = r#"
+    { "version": "0.9" }
+"#;
 // https://github.com/dtolnay/anyhow
 
 fn main() {
