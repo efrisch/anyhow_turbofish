@@ -21,7 +21,7 @@ struct Place {
 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
-    let mut zip_code = String::from("90210");
+    let mut zip_code = String::from("96943");
     if args.len() > 1 {
         zip_code = args[1].clone();
     }
