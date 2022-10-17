@@ -28,7 +28,7 @@ fn main() {
     let url_str = format!("{}{}", JSON_URL, zip_code);
     let json_res = get_json(url_str.as_str());
     let zip_result = match json_res {
-        Ok(json_value) => parse_version(json_value),
+        Ok(json_value) => parse_zipcode(json_value),
         Err(err) => Err(anyhow::anyhow!(err)),
     };
     match zip_result {
@@ -41,7 +41,7 @@ fn main() {
     }
 }
 
-fn parse_version(json_value: json::JsonValue) -> anyhow::Result<ZipResult> {
+fn parse_zipcode(json_value: json::JsonValue) -> anyhow::Result<ZipResult> {
     let mut places_arr: Vec<Place> = Vec::new();
     for i in 0..json_value["places"].len() {
         let pl = &json_value["places"][i];
