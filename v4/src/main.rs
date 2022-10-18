@@ -46,15 +46,16 @@ fn parse_zipcode(json_value: json::JsonValue) -> anyhow::Result<ZipResult> {
     let mut places_arr: Vec<Place> = Vec::new();
     for i in 0..json_value["places"].len() {
         let pl = &json_value["places"][i];
+        let latitude = pl["latitude"].to_string();
+        let longitude = pl["longitude"].to_string();
         let map_url: String = format!(
             "https://www.google.com/maps/search/?api=1&query={}%2C{}",
-            pl["latitude"].to_string(),
-            pl["longitude"].to_string()
+            latitude, longitude
         );
         places_arr.push(Place {
             name: pl["place name"].to_string(),
-            latitude: pl["latitude"].to_string(),
-            longitude: pl["longitude"].to_string(),
+            latitude: latitude,
+            longitude: longitude,
             state: pl["state"].to_string(),
             state_abbr: pl["state abbreviation"].to_string(),
             google_map_url: map_url,
