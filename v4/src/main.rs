@@ -26,7 +26,7 @@ fn main() {
     if args.len() > 1 {
         zip_code = args[1].clone();
     }
-    let url_str = format!("{}{}", JSON_URL, zip_code);
+    let url_str = format!("{JSON_URL}{zip_code}");
     let json_res = get_json(url_str.as_str());
     let zip_result = match json_res {
         Ok(json_value) => parse_zipcode(json_value),
