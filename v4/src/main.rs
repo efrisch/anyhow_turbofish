@@ -48,10 +48,8 @@ fn parse_zipcode(json_value: json::JsonValue) -> anyhow::Result<ZipResult> {
         let pl = &json_value["places"][i];
         let latitude = pl["latitude"].to_string();
         let longitude = pl["longitude"].to_string();
-        let map_url: String = format!(
-            "https://www.google.com/maps/search/?api=1&query={}%2C{}",
-            latitude, longitude
-        );
+        let map_url: String =
+            format!("https://www.google.com/maps/search/?api=1&query={latitude}%2C{longitude}",);
         places_arr.push(Place {
             name: pl["place name"].to_string(),
             latitude: latitude,
