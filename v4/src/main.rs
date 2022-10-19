@@ -13,8 +13,8 @@ struct ZipResult {
 #[allow(dead_code)]
 struct Place {
     name: String,
-    latitude: String,
-    longitude: String,
+    latitude: f64,
+    longitude: f64,
     state: String,
     state_abbr: String,
     google_map_url: String,
@@ -46,8 +46,10 @@ fn parse_zipcode(json_value: json::JsonValue) -> anyhow::Result<ZipResult> {
     let mut places_arr: Vec<Place> = Vec::new();
     for i in 0..json_value["places"].len() {
         let pl = &json_value["places"][i];
-        let latitude = pl["latitude"].to_string();
-        let longitude = pl["longitude"].to_string();
+        // Could easily make this a Geoutils::Location
+        // https://docs.rs/geoutils/latest/geoutils/
+        let latitude = pl["latitude"].to_string().parse::<f64>()?;
+        let longitude = pl["longitude"].to_string().parse::<f64>()?;
         let map_url: String =
             format!("https://www.google.com/maps/search/?api=1&query={latitude}%2C{longitude}",);
         places_arr.push(Place {
